@@ -1,0 +1,7 @@
+﻿"PrefixOrigin","SuffixOrigin","Type","Store","AddressFamily","AddressState","ProtocolIFType","IPv4Address","IPv6Address","InterfaceAlias","InterfaceIndex","IPAddress"
+"WellKnown","Link","Unicast","ActiveStore","IPv6","Preferred","4096",,"fe80::1b19:1889:cc04:d2f2%12","Ethernet 2","12","fe80::1b19:1889:cc04:d2f2%12"
+"WellKnown","Link","Unicast","ActiveStore","IPv6","Preferred","4096",,"fe80::e8aa:9aa8:8b2:c517%9","Ethernet","9","fe80::e8aa:9aa8:8b2:c517%9"
+"WellKnown","WellKnown","Unicast","ActiveStore","IPv6","Preferred","4096",,"::1","Loopback Pseudo-Interface 1","1","::1"
+"Manual","Manual","Unicast","ActiveStore","IPv4","Preferred","4096","192.168.56.1",,"Ethernet 2","12","192.168.56.1"
+"Dhcp","Dhcp","Unicast","ActiveStore","IPv4","Preferred","4096","192.168.100.7",,"Ethernet","9","192.168.100.7"
+"WellKnown","WellKnown","Unicast","ActiveStore","IPv4","Preferred","4096","127.0.0.1",,"Loopback Pseudo-Interface 1","1","127.0.0.1"

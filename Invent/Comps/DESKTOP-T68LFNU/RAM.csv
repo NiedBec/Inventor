@@ -1,0 +1,3 @@
+﻿"capacity","DeviceLocator","Manufacturer","PartNumber","SerialNumber","Tag","TypeDetail","MemoryType"
+"4294967296","Node0_Dimm1","Kingston          ","KHX2133C11D3/","0C3D3106    ","Physical Memory 1","16384","24"
+"4294967296","Node0_Dimm3","Kingston          ","KHX2133C11D3/","0C3D2506    ","Physical Memory 3","16384","24"
