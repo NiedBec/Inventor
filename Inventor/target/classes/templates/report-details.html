@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Детальный отчет</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title th:text="${title}"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="~{reports/header :: header}"></header>
+<div class="container mt-5">
+    <h1>Подробный отчет</h1>
+    <div th:each="el : ${reportInfoDto}" class="alert alert-info mt-2">
+
+        <div class="alert alert-success">
+            <h2>Идентификатор отчета</h2>
+            <hr>
+            <h3 th:text="${el.reportId}"/>
+            <hr>
+        </div>
+
+        <div class="alert alert-success">
+            <h2>UUID компьютера назначенный Windows</h2>
+            <hr>
+            <h3 th:text="${el.uuid}"/>
+            <hr>
+        </div>
+
+        <div class="alert alert-success">
+            <h2>Дата отчета</h2>
+            <hr>
+            <h3 th:text="${el.dateTime}"/>
+            <hr>
+        </div>
+
+        <div class="alert alert-success">
+            <h2>Информация об операционной системе</h2>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Наименование компьютера:</h3>
+                </div>
+                <div class="col-md-6">
+                    <h3 th:text="${el.csname}"/>
+                </div>
+            </div>
+            <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Операционная система:</h3>
+                </div>
+                <div class="col-md-6">
+                    <h3 th:text="${el.caption}"/>
+                </div>
+            </div>
+            <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Серийный идентификационный номер продукта операционной системы:</h3>
+                </div>
+                <div class="col-md-6">
+                    <h3 th:text="${el.serialNumber}"/>
+                </div>
+            </div>
+            <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Номер версии операционной системы:</h3>
+                </div>
+                <div class="col-md-6">
+                    <h3 th:text="${el.version}"/>
+                </div>
+            </div>
+            <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Зарегестрированный пользователь в системе:</h3>
+                </div>
+                <div class="col-md-6">
+                    <h3 th:text="${el.registeredUser}"/>
+                </div>
+            </div>
+            <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Код региона:</h3>
+                </div>
+                <div class="col-md-6">
+                    <h3 th:text="${el.countryCode}"/>
+                </div>
+            </div>
+            <hr>
+        </div>
+
+        <div class="alert alert-success">
+            <h2>Информация об Материнской плате</h2>
+            <hr>
+            <div th:each="motherboard : ${reportInfoDto.motherboards}">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Изготовитель материнской платы:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${motherboard.manufacturer}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Номер материнской платы:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${motherboard.product}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Серийный номер материнской платы:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${motherboard.serialNumber}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Статус материнской платы:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${motherboard.status}"/>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </div>
+
+        <div class="alert alert-success">
+            <h2>Информация об процессорах</h2>
+            <hr style="background-size: 10px; border-top: 10px solid  #480607; border-color:  #480607;">
+            <div th:each="cpu : ${reportInfoDto.cpus}">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Наименование процессора:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${cpu.name}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Местоположение гнезда в материнской плате:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${cpu.SocketDesignation}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Описание процессора:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${cpu.Description}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Тактовая частота процессаора в MHz:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${cpu.CurrentClockSpeed}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 10px; border-top: 10px solid  #480607; border-color:  #480607;">
+            </div>
+        </div>
+
+        <div class="alert alert-success">
+            <h2>Информация об видеокартах</h2>
+            <hr style="background-size: 10px; border-top: 10px solid  #480607; border-color:  #480607;">
+                <div th:each="gpu : ${reportInfoDto.gpus}">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3>Наименование видеокарты:</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 th:text="${gpu.name}"/>
+                        </div>
+                    </div>
+                    <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3>Видеопроцессор:</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 th:text="${gpu.VideoProcessor}"/>
+                        </div>
+                    </div>
+                    <hr style="background-size: 10px; border-top: 10px solid  #480607; border-color:  #480607;">
+                </div>
+        </div>
+
+        <div class="alert alert-success">
+            <h2>Информация об количестве памяти</h2>
+            <hr>
+            <div th:each="ramInfo : ${reportInfoDto.ramInfos}">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Количество ОЗУ модулей:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${ramInfo.memoryDevices}"/>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </div>
+
+        <div class="alert alert-success">
+            <h2>Информация об оперативной памяти</h2>
+            <hr style="background-size: 10px; border-top: 10px solid  #480607; border-color:  #480607;">
+            <div th:each="ram : ${reportInfoDto.rams}">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Емкость оперативной памяти в байтах:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${ram.capacity}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Метка сокета или платы, на которой хранится память:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${ram.deviceLocator}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Изготовитель ОЗУ:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${ram.manufacturer}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Номер части, назначенный организацией, ответственной за производство или изготовление физического элемента:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${ram.partNumber}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Серийный номер ОЗУ:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${ram.serialNumber}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Уникальный идентификатор физического устройства памяти, представленного экземпляром Win32_PhysicalMemory:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${ram.tag}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Общая емкость ОЗУ:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${ram.typeDetail}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Тип оперативной памяти:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <u>
+                            <h3 data-bs-toggle="tooltip" data-bs-placement="right" title="
+                            Неизвестно (0); 1 - Другое; 2 - DRAM; 3 - Синхронная DRAM; 4 - Кэш DRAM; 5 - EDO; 6 - EDRAM;
+                            7 - VRAM; 8 - SRAM; 9 - ОЗУ; 10 - ПЗУ; 11 - Flash; 12 - EEPROM;
+                            13 - FEPROM; 14 - EPROM; 15 - CDRAM; 16 - 3DRAM; 17 - SDRAM; 18 - SGRAM;
+                            19 - RDRAM; 20 - DDR; 21 - DDR2; 22 - DDR2 FB-DIMM; 24 - DDR3; 25 - FBD2; DDR4 - 26" th:text="${ram.memoryType}"/>
+                        </u>
+                    </div>
+                </div>
+                <hr style="background-size: 10px; border-top: 10px solid  #480607; border-color:  #480607;">
+            </div>
+        </div>
+
+
+
+        <div class="alert alert-success">
+            <h2>Информация об Жестких дисках</h2>
+            <hr style="background-size: 10px; border-top: 10px solid  #480607; border-color:  #480607;">
+                <div th:each="hdd : ${reportInfoDto.hdds}">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3>Наименование жесткого диска:</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 th:text="${hdd.model}"/>
+                        </div>
+                    </div>
+                    <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3>Количество разделов на этом физическом диске, распознаваемых операционной системой:</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 th:text="${hdd.partitions}"/>
+                        </div>
+                    </div>
+                    <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3>Ёмкость диска в байтах:</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 th:text="${hdd.size}"/>
+                        </div>
+                    </div>
+                    <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3>Тип интерфейса физического диска:</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 th:text="${hdd.interfaceType}"/>
+                        </div>
+                    </div>
+                    <hr style="background-size: 10px; border-top: 10px solid  #480607; border-color:  #480607;">
+                </div>
+        </div>
+
+        <div class="alert alert-success">
+            <h2>Информация об Логических дисках</h2>
+            <hr style="background-size: 10px; border-top: 10px solid  #480607; border-color:  #480607;">
+            <div th:each="logicalDrive : ${reportInfoDto.logicalDrives}">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Наименование тома в операционной системе:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${logicalDrive.deviceID}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Файловая система:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${logicalDrive.fileSystem}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Ёмкость диска в байтах:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${logicalDrive.size}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Свободное место на диске в байтах:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${logicalDrive.freeSpace}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+                <hr style="background-size: 10px; border-top: 10px solid  #480607; border-color:  #480607;">
+            </div>
+        </div>
+
+        <div class="alert alert-success">
+            <h2>Информация об Сетевых картах</h2>
+            <hr style="background-size: 10px; border-top: 10px solid  #480607; border-color:  #480607;">
+            <div th:each="lanCard : ${reportInfoDto.lanCards}">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Наименование сетевого модуля:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${lanCard.name}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Тип сетевого адаптера:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${lanCard.adapterType}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>MAC адресс сетевого модуля:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${lanCard.macAddress}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+                <hr style="background-size: 10px; border-top: 10px solid  #480607; border-color:  #480607;">
+            </div>
+        </div>
+
+        <div class="alert alert-success">
+            <h2>Сетевая информация</h2>
+            <hr>
+            <div th:each="netInfo : ${reportInfoDto.netInfos}">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Тип префиксного адреса:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${netInfo.prefixOrigin}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Тип суффиксного адреса:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${netInfo.suffixOrigin}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Тип IP адреса:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${netInfo.type}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>iPv4 адресс:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${netInfo.iPv4Address}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>iPv6 адресс:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${netInfo.iPv6Address}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+                <hr style="background-size: 10px; border-top: 10px solid  #480607; border-color:  #480607;">
+            </div>
+        </div>
+
+        <div class="alert alert-success">
+            <h2>Местоположение компьютера</h2>
+            <hr>
+            <div th:each="location : ${reportInfoDto.locations}">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Город:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${location.city}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Улица:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${location.street}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Дом:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${location.house}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Кабинет:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${location.cabinet}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+                <hr style="background-size: 10px; border-top: 10px solid  #480607; border-color:  #480607;">
+            </div>
+        </div>
+
+        <div class="alert alert-success">
+            <h2>Список установленного ПО</h2>
+            <hr>
+            <div th:each="program : ${reportInfoDto.programs}">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Наименование ПО:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${program.displayName}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Версия ПО:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${program.displayVersion}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Версия ПО:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${program.publisher}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Версия ПО:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 th:text="${program.installDate}"/>
+                    </div>
+                </div>
+                <hr style="background-size: 4px; border-top: 4px solid #3d3d3d; border-color: #3d3d3d;">
+                <hr style="background-size: 10px; border-top: 10px solid  #480607; border-color:  #480607;">
+            </div>
+        </div>
+        <form th:action="'/report/' + ${el.reportId} + '/remove'" method="post">
+            <button class="btn btn-warning" type="submit">Удалить</button>
+        </form>
+    </div>
+    </div>
+</div>
+<div th:insert="~{reports/footer :: footer}"></div>
+</body>
+</html>
